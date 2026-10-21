@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>The Computer Hut</title>
+
+    <!-- Brand colours: Hut Green #176B4C · Cream #F3ECD8 · Hot Amber #E8A33D · Deep Ink #0E2A20 -->
+</head>
+
+<body class="min-h-screen bg-[#0E2A20] flex items-center justify-center p-4"
+      style="font-family:'Space Grotesk',system-ui,sans-serif;background-image:radial-gradient(900px 500px at 50% -10%, #1c3b2d 0%, #0E2A20 60%)">
+
+    <!-- login area -->
+    <div class="rounded-3xl overflow-hidden border border-black/20 shadow-2xl shadow-black/50 w-[400px] mx-auto ">
+        
+        <div class="bg-[#176B4C] rounded-t-lg p-4 flex">
+            <img src="../computer-hut-logo.svg" alt="The Computer Hut Logo" class="w-20 h-20">
+            <div class="flex justify-center mb-1 flex-col pl-4">
+                <h1 class="text-2xl font-bold text-[#F3ECD8]">The Computer Hut</h1>
+                <p class="uppercase tracking-widest text-sm text-[#F3ECD8]/80">Free Guest WiFi</p>
+            </div>
+        </div>
+        
+        <div class="bg-[#F3ECD8] pt-8 pb-8 p-4">
+            <p text="text-[#0E2A20]/50">Welcome in. Sign in to join the hut's network and grab a hot byte.</p>
+        </div>
+
+        <form action="/login" method="post" class="rounded-b-lg bg-[#F3ECD8] flex flex-col p-4">
+
+            <label for="username" class="mb-2">Username</label>
+            <input type="text" name="username" class="w-full mb-2 p-2 rounded bg-white mb-4">
+
+            <label for="password" class="mb-2">Password</label>
+            <input type="password" class="w-full mb-2 p-2 rounded bg-white">
+
+            <button type="submit" class="bg-[#E8A33D] text-[#0E2A20] font-bold m-10 p-2 rounded">Connect</button>
+
+            <p class="text-[#0E2A20]/50 text-xs text-center">unsecured network | traffic is not encrypted</p>
+        </form>
+
+    </div>
+
+    
+</body>
+</html>
+
+<script>
+    // get login and password and send to success.html page
+    if (window.location.pathname === '/login.html') {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = form.querySelector('input[name="username"]').value;
+            const password = form.querySelector('input[type="password"]').value;
+            window.location.href = `/success.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+        });
+    }
+
+</script>
